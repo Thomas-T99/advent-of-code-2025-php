@@ -13,27 +13,38 @@
 <body>
 <h1>Advent of Code 2025 Solutions</h1>
 
-<form method="post" action="includes/process_form.php">
+    <form method="post" action="includes/process_form.php">
 
-    <label for="problem">Select which problem you want solved:</label>
-    <select name="problem" id="problem">
-        <?php
-            foreach (new DirectoryIterator("includes/solutions") as $file) {
-                if ($file->isDot()) continue;
-                $fileName = $file->getBasename(".php");
-                $selectorName = str_replace("_", " ", $fileName);
-                $selectorName = ucwords($selectorName);
-                echo "<option value='" . $fileName . "'>" . $selectorName . "</option>";
-            }
-        ?>
-    </select>
+        <label for="problem">Select which problem you want solved:</label>
+        <select name="problem" id="problem">
+            <?php
+                foreach (new DirectoryIterator("includes/solutions") as $file) {
+                    if ($file->isDot()) continue;
+                    $fileName = $file->getBasename(".php");
+                    $selectorName = str_replace("_", " ", $fileName);
+                    $selectorName = ucwords($selectorName);
+                    echo "<option value='" . $fileName . "'>" . $selectorName . "</option>";
+                }
+            ?>
+        </select>
 
-    <!-- TODO: Select the present input file or upload a file
-    Check if the input file is present, show error if not
-    -->
+        <br>
 
-    <input type="submit">
-</form>
+        <label for="problem-part">Select which part you want solved:</label>
+        <select name="problem-part" id="problem-part">
+            <option value="1">Part 1</option>
+            <option value="2">Part 2</option>
+        </select>
+
+        <br>
+
+        <!-- TODO: Select the present input file or upload a file
+        Check if the input file is present, show error if not
+        -->
+
+        <br>
+        <input type="submit">
+    </form>
 
     <!-- TODO: Out put of the problem should be returned here. -->
 
