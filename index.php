@@ -13,7 +13,7 @@
 <body>
 <h1>Advent of Code 2025 Solutions</h1>
 
-<form method="post" action="includes/proceesss_form.php">
+<form method="post" action="includes/process_form.php">
 
     <label for="problem">Select which problem you want solved:</label>
     <select name="problem" id="problem">
