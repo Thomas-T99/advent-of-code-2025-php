@@ -1,3 +1,7 @@
+<?php
+session_start();
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,17 +41,20 @@
         </select>
 
         <br>
+        <label for="input-file">Please select a file to input.</label>
+        <input type="file" accept=".txt"  id="input-file" name="input-file">
 
-        <!-- TODO: Select the present input file or upload a file
-        Check if the input file is present, show error if not
-        -->
+        <!-- TODO: Check if the input file is present, show error if not -->
 
         <br>
         <input type="submit">
     </form>
 
-    <!-- TODO: Out put of the problem should be returned here. -->
+    <?php if (isset($_SESSION['solution'])): ?>
+    <p><?php echo $_SESSION['solution']?></p>
+    <?php endif; ?>
 
+    <p>wow</p>
 </body>
 </html>
 
