@@ -27,7 +27,5 @@ switch ($solutionPart) {
         break;
 }
 $_SESSION['solution'] = $solution;
-}
 
-
-
+http_redirect("index.php");
