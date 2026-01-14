@@ -1,3 +1,4 @@
 # Inputs are not to be uploaded to GitHub
 includes/inputs/
 includes/temporary/*
+!*.gitkeep
