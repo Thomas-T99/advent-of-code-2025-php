@@ -1,6 +1,6 @@
 <?php
 
-function process_input($inputFile){
+function processInput($inputFile){
     $lines = file($inputFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $input = array();
     foreach($lines as $line){

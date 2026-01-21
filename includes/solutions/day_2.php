@@ -1,6 +1,6 @@
 <?php
 
-function process_input($inputFile){
+function processInput($inputFile){
     $fileContents = file_get_contents($inputFile);
     $ranges = explode(",", $fileContents);
     $input = array();
