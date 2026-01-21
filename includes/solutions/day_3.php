@@ -5,11 +5,26 @@ function processInput($inputFile){
     foreach($lines as $line) {
         array_push($input, str_split($line));
     }
-    print_r($input);
     return $input;
 }
 function part1($input){
-    return "Not yet completed";
+    $sum = 0;
+    foreach($input as $digits){
+        $firstMax = 0;
+        $secondMax = 0;
+        for($i = 0; $i < count($digits) - 1; $i++){
+            if($digits[$i] > $firstMax){
+                $firstMax = $digits[$i];
+                $secondMax = $digits[$i + 1];
+                continue;
+            }
+            if($digits[$i + 1] > $secondMax){
+                $secondMax = $digits[$i + 1];
+            }
+        }
+        $sum += $firstMax * 10 + $secondMax;
+    }
+    return $sum;
 }
 function part2($input){
     return "Not yet completed";
