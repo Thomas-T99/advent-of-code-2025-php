@@ -23,15 +23,13 @@ function part1($input){
             continue;
         }
 
-        for($int = $min; $int < $max; $int++){
+        for($int = $min; $int <= $max; $int++){
             $str = (string)$int;
             $strLength = strlen($str);
             if($strLength % 2 != 0){
                 continue;
             }
-            $firstHalf = substr($str, 0, $strLength / 2);
-            $lastHalf = substr($str, $strLength / 2);
-            if($firstHalf == $lastHalf){
+            if(isRepeated($str, $strLength / 2)){
                 $invalidSum += $int;
             }
         }
@@ -40,5 +38,30 @@ function part1($input){
 }
 
 function part2($input){
-    return "Not yet completed";
+    $invalidSum = 0;
+    foreach($input as $range) {
+        $min = $range[0];
+        $max = $range[1];
+        for($int = $min; $int <= $max; $int++){
+            $str = (string)$int;
+            $strLength = strlen($str);
+            for($i = 1; $i <= $strLength / 2; $i++) {
+                if($strLength % $i != 0){
+                    continue;
+                }
+                if (isRepeated($str, $i)) {
+                    $invalidSum += $int;
+                    break;
+                }
+            }
+        }
+    }
+    return $invalidSum;
 }
+
+function isRepeated($integer, $repeatLength): bool {
+    $splitArray = str_split($integer, $repeatLength);
+    $uniqueValues = array_unique($splitArray);
+    return count($uniqueValues) == 1;
+}
+
