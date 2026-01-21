@@ -3,7 +3,7 @@ session_start();
 
 $solutionFile = $_POST['problem'];
 $solutionPart = $_POST['problem-part'];
-$inputFile = $_POST['input-file'];
+$inputFile = $_FILES['input-file'];
 
 $solutionFilePath = "solutions/$solutionFile.php";
 
@@ -13,9 +13,9 @@ The solution part must equal 1 or 2
 There must be an input file. Check both inputs/ if it is empty. The file must be a .txt
 */
 
-require_once($solutionFilePath);
+include_once($solutionFilePath);
 
-$input = processInput($inputFile);
+$input = processInput($inputFile['tmp_name']);
 
 $solution = "";
 switch ($solutionPart) {
@@ -26,6 +26,5 @@ switch ($solutionPart) {
         $solution = part2($input);
         break;
 }
-$_SESSION['solution'] = $solution;
-
+$_SESSION['solution'] = $input;
 http_redirect("index.php");
