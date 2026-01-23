@@ -5,7 +5,7 @@ $solutionFile = $_POST['problem'];
 $solutionPart = $_POST['problem-part'];
 $inputFile = $_FILES['input-file'];
 
-$solutionFilePath = "solutions/$solutionFile.php";
+$solutionFilePath = __DIR__ . "/solutions/$solutionFile.php";
 
 /* TODO: Validate the inputs
 The day must be selected, and the file for the day must exist
