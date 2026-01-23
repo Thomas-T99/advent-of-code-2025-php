@@ -1,6 +1,6 @@
 <?php
 
-function process_input($inputFile){
+function processInput($inputFile){
     $lines = file($inputFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $input = array();
     foreach($lines as $line){
@@ -10,7 +10,8 @@ function process_input($inputFile){
     return $input;
 }
 
-function part1($input){
+function part1($input)
+{
     $zeroCount = 0;
     $dialCount = 50;
     foreach($input as $line){
@@ -38,14 +39,14 @@ function part2($input){
         $count = $line[1];
 
         // Count and remove all full rotations in a request
-        $full_rotations = intdiv($count, 100);
-        $zeroCount += $full_rotations;
+        $fullRotations = intdiv($count, 100);
+        $zeroCount += $fullRotations;
         $count = $count % 100;
 
         if ($dialCount == 0) {
-            $starting_zero = true;
+            $startingZero = true;
         } else {
-            $starting_zero = false;
+            $startingZero = false;
         }
 
         if ($direction == "L") {
@@ -56,7 +57,7 @@ function part2($input){
         if ($dialCount == 0) {
             $zeroCount++;
         } elseif ($dialCount < 0) {
-            if (!$starting_zero) { // otherwise we would count the zero twice, at the end of the last rotation (below) and during this one
+            if (!$startingZero) { // otherwise we would count the zero twice, at the end of the last rotation (below) and during this one
                 $zeroCount++;
             }
             $dialCount = $dialCount + 100;
