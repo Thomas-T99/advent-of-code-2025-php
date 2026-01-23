@@ -26,5 +26,7 @@ switch ($solutionPart) {
         $solution = part2($input);
         break;
 }
-$_SESSION['solution'] = $input;
-http_redirect("index.php");
+$_SESSION['solution'] = $solution;
+$indexLocation =__DIR__ . "../index.php";
+header('Location: ' . $indexLocation);
+exit;
