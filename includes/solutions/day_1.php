@@ -5,7 +5,7 @@ function processInput($inputFile){
     $input = array();
     foreach($lines as $line){
         $inputArray = array(substr($line, 0,1), substr($line, 1));
-        array_push($input, $inputArray);
+        $input[] = $inputArray;
     }
     return $input;
 }
