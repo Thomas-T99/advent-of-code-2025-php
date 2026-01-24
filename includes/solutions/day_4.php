@@ -8,6 +8,22 @@ function processInput($inputFile){
     return $input;
 }
 function part1($input){
+    return getRolls($input)["count"];
+}
+
+function part2($input){
+    $count = 0;
+    do {
+        $result = getRolls($input);
+        $rollsGrabbed = $result["count"];
+        $input = $result["rolls"];
+        $count += $rollsGrabbed;
+    } while ($rollsGrabbed > 0);
+
+    return $count;
+}
+
+function getRolls($input){
     $count = 0;
 
     for ($row=0; $row < count($input); $row++) {
@@ -47,18 +63,16 @@ function part1($input){
                     }
                     if ($input[$row + $i][$col + $j] == '@') {
                         $adjacentRolls++;
+
                     }
                 }
             }
 
             if ($adjacentRolls < 4) {
                 $count++;
+                $input[$row][$col] = ".";
             }
         }
     }
-    return $count;
-}
-
-function part2($input){
-    return "Not Yet Completed";
+    return ["count" => $count, "rolls" => $input];
 }
