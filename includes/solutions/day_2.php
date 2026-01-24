@@ -6,7 +6,7 @@ function processInput($inputFile){
     $input = array();
     foreach($ranges as $range){
         $rangeArray = explode("-", $range);
-        array_push($input, $rangeArray);
+        $input[] = $rangeArray;
     }
     return $input;
 }
